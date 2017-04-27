@@ -8,7 +8,7 @@ have some meaningful progress indication.
 
 The animation is based on this thread: http://stackoverflow.com/questions/36129522/show-loading-graph-message-in-plotly
 
-# Installation & example
+## Installation & example
 
 How to install: 
 
@@ -21,7 +21,7 @@ How to run the example given in [app.R](app.R)
 `
 shiny::runGitHub("andrewsali/plotlyBars")
 `
-# Code changes required
+## How to adapt your code
 
 The wrapping is implemented as a [Shiny module](https://shiny.rstudio.com/articles/modules.html), therefore compared to the usual plotlyOutput / renderPlotly pair, slight code change is required. 
 
