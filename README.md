@@ -1,6 +1,6 @@
 # plotlyBars
 
-A module to create plotly bars animation. The animation will automatically appear / disappear exactly as the plotly plot does,
+A Shiny module to create plotly bars animation. The animation will automatically appear / disappear exactly as the plotly plot does,
 therefore you don't need to worry about handling anything else additionally.
 
 The animation starts __before__ the plot calculation, so you can use this instead of `shiny::withProgress` in case you don't 
