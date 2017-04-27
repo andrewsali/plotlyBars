@@ -4,6 +4,7 @@ library(plotly)
 library(plotlyBars)
 
 ui <- fluidPage(
+  tags$b("This example shows a fake long-running reactive returning a plotly plot. Whilst the reactive is running, the animation is shown."),
   checkboxInput("show_plot","Show plot",value=FALSE),
   plotlyBarsUI("example")
 )

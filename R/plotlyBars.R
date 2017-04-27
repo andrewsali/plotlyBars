@@ -1,6 +1,9 @@
 #' The UI function
+#' @param id The namespace id
+#' @param ... Further arguments passed to \code{\link{plotlyOutput}}
+#' @details See \url{https://github.com/andrewsali/plotlyBars}
 #' @export
-plotlyBarsUI <- function(id) {
+plotlyBarsUI <- function(id,...) {
   ns <- NS(id)
   tagList(
     shinyjs::useShinyjs(),
@@ -97,30 +100,32 @@ animation-timing-function: linear;
     div(id = ns("plotly-container")
         ,
         div(id=ns("plotly-bars"),
-            class = "plotlybars-wrapper"
-            , div( class="plotlybars"
-                   , div(class="plotlybars-bar b1")
-                   , div(class="plotlybars-bar b2")
-                   , div(class="plotlybars-bar b3")
-                   , div(class="plotlybars-bar b4")
-                   , div(class="plotlybars-bar b5")
-                   , div(class="plotlybars-bar b6")
-                   , div(class="plotlybars-bar b7")
+            class = "plotlybars-wrapper",
+            style="display:none",
+            div( class="plotlybars"
+                 , div(class="plotlybars-bar b1")
+                 , div(class="plotlybars-bar b2")
+                 , div(class="plotlybars-bar b3")
+                 , div(class="plotlybars-bar b4")
+                 , div(class="plotlybars-bar b5")
+                 , div(class="plotlybars-bar b6")
+                 , div(class="plotlybars-bar b7")
             )
             , div(class="plotlybars-text"
                   , p("loading")
             )
         )
-        , plotly::plotlyOutput(ns("plotly_plot"))
+        , plotly::plotlyOutput(ns("plotly_plot"),...)
     )
   )
 }
 
-#' accept only a single ggplot layer
+#' Module function which calls \code{\link{renderPlotly}} and ensures that loading animation is appropriately displayed / hidden.
 #' @export
 #' @param plot_reactive A reactive returning a plotly object
-#' @details This module wraps a reactive returning
-plotlyBars <- function(input,output,session,plot_reactive) {
+#' @param ... Further options passed to \code{\link{renderPlotly}}
+#' @details See \url{https://github.com/andrewsali/plotlyBars}
+plotlyBars <- function(input,output,session,plot_reactive,...) {
   ns <- session$ns
 
   # we need to ensure that renderPlotly only runs after the animation is flushed & loaded to be certain that the loading animation is rendered

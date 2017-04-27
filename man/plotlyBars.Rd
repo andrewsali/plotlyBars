@@ -2,16 +2,18 @@
 % Please edit documentation in R/plotlyBars.R
 \name{plotlyBars}
 \alias{plotlyBars}
-\title{accept only a single ggplot layer}
+\title{Module function which calls \code{\link{renderPlotly}} and ensures that loading animation is appropriately displayed / hidden.}
 \usage{
-plotlyBars(input, output, session, plot_reactive)
+plotlyBars(input, output, session, plot_reactive, ...)
 }
 \arguments{
 \item{plot_reactive}{A reactive returning a plotly object}
+
+\item{...}{Further options passed to \code{\link{renderPlotly}}}
 }
 \description{
-accept only a single ggplot layer
+Module function which calls \code{\link{renderPlotly}} and ensures that loading animation is appropriately displayed / hidden.
 }
 \details{
-This module wraps a reactive returning
+See \url{https://github.com/andrewsali/plotlyBars}
 }

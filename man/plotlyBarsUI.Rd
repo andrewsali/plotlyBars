@@ -4,8 +4,16 @@
 \alias{plotlyBarsUI}
 \title{The UI function}
 \usage{
-plotlyBarsUI(id)
+plotlyBarsUI(id, ...)
+}
+\arguments{
+\item{id}{The namespace id}
+
+\item{...}{Further arguments passed to \code{\link{plotlyOutput}}}
 }
 \description{
 The UI function
+}
+\details{
+See \url{https://github.com/andrewsali/plotlyBars}
 }
