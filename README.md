@@ -3,8 +3,7 @@
 A Shiny module to create plotly bars animation. The animation will automatically appear / disappear exactly as the plotly plot does,
 therefore you don't need to worry about handling anything else additionally.
 
-The animation starts __before__ the plot calculation, so you can use this instead of `shiny::withProgress` in case you don't 
-have some meaningful progress indication.
+The animation starts __before__ the plot calculation, so you can use the plot animation to show calculations happening (instead of using for example `shiny::withProgress` in case you don't have some meaningful progress indication). Also, the plot animation will continue all the way until the plot is rendered, thereby always giving the user an impression that something is happening.
 
 The animation is based on this thread: http://stackoverflow.com/questions/36129522/show-loading-graph-message-in-plotly
 
