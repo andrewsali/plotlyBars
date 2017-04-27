@@ -14,7 +14,7 @@ How to install:
 devtools::install_github("andrewsali/plotlyBars")
 `
 
-How to run the example
+How to run the example given in [app.R](app.R)
 
 `
 shiny::runGitHub("andrewsali/plotlyBars")
