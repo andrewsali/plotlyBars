@@ -17,6 +17,6 @@ devtools::install_github("andrewsali/plotlyBars")
 How to run the example
 
 `
-shiny::runGithub("andrewsali/plotlyBars")
+shiny::runGitHub("andrewsali/plotlyBars")
 `
 
