@@ -22,6 +22,34 @@ shiny::runGitHub("andrewsali/plotlyBars")
 `
 ## How to adapt your code
 
+There are two ways to wrap your existing code to show the loading bars. The first is somewhat experimental, but requires minimal code-change. The second has less magic, but requires a bit more (albeit still small) changes.
+
+### Wrap your code in withBars / withBarsUI
+
+A simple shorthand is created using the functions `withBarsUI` and `withBars`. As shown in [app.R](app.R), simply wrap the UI call within `withBarsUI` (you cannot use the `%>%` unfortunately) and the output code within `withBars`. So for example:
+
+`
+withBarsUI(plotlyOutput("example"))
+`
+ would be the UI part and 
+ 
+`
+ withBars(
+    output$example <- renderPlotly({
+      req(input$show_plot)
+      input$redraw_plot
+      Sys.sleep(10) # just for demo so you can enjoy the animation
+      plot_ly(
+        x = runif(1e4), y = runif(1e4), type = "scatter", mode = "markers"
+      )
+    })
+  )
+`
+
+would be the corresponding server part.
+
+### Calling as a Shiny module
+
 The wrapping is implemented as a [Shiny module](https://shiny.rstudio.com/articles/modules.html), therefore compared to the usual plotlyOutput / renderPlotly pair, slight code change is required. 
 
 * In your UI function you need to call `plotlyBarsUI("my_id")` instead of `plotlyOutput("my_id")`.
