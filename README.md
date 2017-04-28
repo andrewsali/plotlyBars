@@ -11,15 +11,16 @@ The animation is based on this thread: http://stackoverflow.com/questions/361295
 
 How to install: 
 
-`
+```
 devtools::install_github("andrewsali/plotlyBars")
-`
+```
 
 How to run the example given in [app.R](app.R)
 
-`
+```
 shiny::runGitHub("andrewsali/plotlyBars")
-`
+```
+
 ## How to adapt your code
 
 There are two ways to wrap your existing code to show the loading bars. The first is somewhat experimental, but requires minimal code-change. The second has less magic, but requires a bit more (albeit still small) changes.
