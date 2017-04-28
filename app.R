@@ -5,6 +5,7 @@ library(plotlyBars)
 ui <- fluidPage(
   tags$b("This example shows a fake long-running reactive returning a plotly plot. Whilst the reactive is running, the animation is shown."),
   checkboxInput("show_plot","Show plot",value=TRUE),
+  actionButton("redraw_plot","Re-draw plot"),
   plotlyBarsUI("example")
 )
 
@@ -13,9 +14,10 @@ server <- function(input, output) {
              "example",
              plot_reactive = reactive({
                req(input$show_plot)
+               input$redraw_plot
                Sys.sleep(10) # just for demo so you can enjoy the animation
                plot_ly(
-                 x = 2, y = 3, type = "scatter", mode = "markers"
+                 x = runif(1e4), y = runif(1e4), type = "scatter", mode = "markers"
                )
              })
   )

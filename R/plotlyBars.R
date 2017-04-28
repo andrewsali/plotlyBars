@@ -17,6 +17,10 @@ plotlyBarsUI <- function(id,...) {
             position: relative;
 }
 
+.plotly.html-widget.html-widget-output.shiny-bound-output.js-plotly-plot.recalculating {
+opacity: 0.0;
+}
+
 .plotlybars {
 padding: 0 10px;
 vertical-align: bottom;
@@ -30,9 +34,11 @@ box-sizing: border-box;
 .plotlybars-wrapper {
 width: 165px;
 height: 100px;
-margin: 0 auto;
+margin: auto;
 left: 0;
 right: 0;
+top:0;
+bottom:0;
 position: absolute;
 z-index: 1;
 }
@@ -97,23 +103,23 @@ animation-timing-function: linear;
         )
       ))
     ,
-    div(id = ns("plotly-container")
-        ,
-        div(id=ns("plotly-bars"),
-            class = "plotlybars-wrapper",
-            style="display:none",
-            div( class="plotlybars"
-                 , div(class="plotlybars-bar b1")
-                 , div(class="plotlybars-bar b2")
-                 , div(class="plotlybars-bar b3")
-                 , div(class="plotlybars-bar b4")
-                 , div(class="plotlybars-bar b5")
-                 , div(class="plotlybars-bar b6")
-                 , div(class="plotlybars-bar b7")
-            )
-            , div(class="plotlybars-text"
-                  , p("loading")
-            )
+    div(id = ns("plotly-container"),
+        style="position:relative;"
+        ,div(id=ns("plotly-bars"),
+             class = "plotlybars-wrapper",
+             style = "display:none",
+             div( class="plotlybars"
+                  , div(class="plotlybars-bar b1")
+                  , div(class="plotlybars-bar b2")
+                  , div(class="plotlybars-bar b3")
+                  , div(class="plotlybars-bar b4")
+                  , div(class="plotlybars-bar b5")
+                  , div(class="plotlybars-bar b6")
+                  , div(class="plotlybars-bar b7")
+             )
+             , div(class="plotlybars-text"
+                   , p("loading")
+             )
         )
         , plotly::plotlyOutput(ns("plotly_plot"),...)
     )
