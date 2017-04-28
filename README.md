@@ -23,7 +23,7 @@ shiny::runGitHub("andrewsali/plotlyBars")
 
 ## How to adapt your code
 
-There are two ways to wrap your existing code to show the loading bars. The first is somewhat experimental, but requires minimal code-change. The second has less magic, but requires a bit more (albeit still small) changes.
+There are two ways to wrap your existing code to show the loading bars (in either case make sure to load the `plotlyBars` library both in the UI and server R-files). The first is somewhat experimental, but requires minimal code-change. The second has less magic, but requires a bit more (albeit still small) changes.
 
 ### Wrap your code in withBars / withBarsUI
 
