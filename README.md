@@ -55,6 +55,7 @@ The wrapping is implemented as a [Shiny module](https://shiny.rstudio.com/articl
 
 * In your UI function you need to call `plotlyBarsUI("my_id")` instead of `plotlyOutput("my_id")`.
 * In your server function instead of calling `renderPlotly`, just use `callModule` and pass it a reactive that returns a plotly object. For example, in the server function one could write:
+
 ```
 callModule(plotlyBars,
              "my_id",
@@ -63,6 +64,7 @@ callModule(plotlyBars,
                  x = 2, y = 3, type = "scatter", mode = "markers"
                )
              })
-  )```
+  )
+```
   
   This calls the plotlyBars function with id "my_id" and passes in a reactive that returns a plotly object. So whatever you would've put in `renderPlotly`, you can just wrap it in `reactive` and pass it as the `plot_reactive` argument to `shiny::callModule`.
