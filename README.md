@@ -11,28 +11,61 @@ The animation is based on this thread: http://stackoverflow.com/questions/361295
 
 How to install: 
 
-`
+```
 devtools::install_github("andrewsali/plotlyBars")
-`
+```
 
 How to run the example given in [app.R](app.R)
 
-`
+```
 shiny::runGitHub("andrewsali/plotlyBars")
-`
+```
+
 ## How to adapt your code
+
+There are two ways to wrap your existing code to show the loading bars (in either case make sure to load the `plotlyBars` library both in the UI and server R-files). The first is somewhat experimental, but requires minimal code-change. The second has less magic, but requires a bit more (albeit still small) changes.
+
+### Wrap your code in withBars / withBarsUI
+
+A simple shorthand is created using the functions `withBarsUI` and `withBars`. As shown in [app.R](app.R), simply wrap the UI call within `withBarsUI` (you cannot use the `%>%` unfortunately) and the output code within `withBars`. So for example:
+
+```
+withBarsUI(plotlyOutput("example"))
+```
+
+ would be the UI part and 
+ 
+```
+ withBars(
+    output$example <- renderPlotly({
+      req(input$show_plot)
+      input$redraw_plot
+      Sys.sleep(10) # just for demo so you can enjoy the animation
+      plot_ly(
+        x = runif(1e4), y = runif(1e4), type = "scatter", mode = "markers"
+      )
+    })
+  )
+```
+
+would be the corresponding server part.
+
+### Calling as a Shiny module
 
 The wrapping is implemented as a [Shiny module](https://shiny.rstudio.com/articles/modules.html), therefore compared to the usual plotlyOutput / renderPlotly pair, slight code change is required. 
 
 * In your UI function you need to call `plotlyBarsUI("my_id")` instead of `plotlyOutput("my_id")`.
 * In your server function instead of calling `renderPlotly`, just use `callModule` and pass it a reactive that returns a plotly object. For example, in the server function one could write:
-`callModule(plotlyBars,
+
+```
+callModule(plotlyBars,
              "my_id",
              plot_reactive = reactive({
                plot_ly(
                  x = 2, y = 3, type = "scatter", mode = "markers"
                )
              })
-  )`
+  )
+```
   
   This calls the plotlyBars function with id "my_id" and passes in a reactive that returns a plotly object. So whatever you would've put in `renderPlotly`, you can just wrap it in `reactive` and pass it as the `plot_reactive` argument to `shiny::callModule`.
