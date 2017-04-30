@@ -121,7 +121,7 @@ animation-timing-function: linear;
                    , p("loading")
              )
         )
-        , plotly::plotlyOutput(ns("plotly_plot"),...)
+        , plotly::plotlyOutput(ns(""),...)
     )
   )
 }
@@ -150,7 +150,7 @@ plotlyBars <- function(input,output,session,plot_reactive,...) {
     hidePlot <- FALSE
   })
 
-  output$plotly_plot <- renderPlotly({
+  output[[""]] <- renderPlotly({
     update_plot$val
     isolate(plot_reactive())
   })
