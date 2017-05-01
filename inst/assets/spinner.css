@@ -1,0 +1,18 @@
+.shiny-spinner-output-container {
+  position: relative;
+}
+
+.shiny-spinner-spinner-container {
+  /* ensure spinner container z-index is maximal so that it always overlaps the plot*/
+  z-index: 2147483647;
+  height: 100%;
+  width: 100%;
+}
+
+.shiny-spinner-loading-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -33px;  /* half of the spinner's height */
+  margin-left: -33px; /* half of the spinner's width */
+}
