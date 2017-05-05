@@ -1,5 +1,9 @@
 # plotlyBars
 
+> UPDATE: A much more lightweight and general solution to showing loading animations in Shiny is now provided by [shinycssloaders](https://github.com/andrewsali/shinycssloaders). 
+
+>It is recommended to use that library instead of this one as that doesn't require any changes in the `server` function and doesn't change the output id's via Shiny module namespacing. Also it is more  general in that you can use it for any kind of Shiny output.
+
 A Shiny module to create plotly bars animation. The animation will automatically appear / disappear exactly as the plotly plot does,
 therefore you don't need to worry about handling anything else additionally.
 
